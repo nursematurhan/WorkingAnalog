@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claymorphism Anolog Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hour"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="minute"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="second"></div>
+        </div>
+        <div class="indicators">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        const hour = document.getElementById('hour');
+        const minute = document.getElementById('minute');
+        const second = document.getElementById('second');
+
+        setInterval(updateClock);
+
+        function updateClock() {
+            let date = new Date()
+            let sec = date.getSeconds()
+            let min = date.getMinutes() + sec/60;
+            let hr = date.getHours() + min/60; // you could also add + sec/3600 but that would barely make any difference
+
+
+            hour.style.transform = `rotate(${hr * 30}deg)`;
+            minute.style.transform =`rotate(${min * 6}deg)`;
+            second.style.transform = `rotate(${sec * 6}deg)`;
+        }
+    </script>
+</body>
+</html>
